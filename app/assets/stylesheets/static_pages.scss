@@ -5,11 +5,48 @@
 	background-image: image-url('taipei_city_513581.jpg');
 	background-attachment: fixed;
 	background-size: initial;
-	padding-top: 550px;
-	padding-bottom: 50px;
+	float: right;
+  min-width: 100%;
+  min-hight: 100%;
 }
 
-.contact-text{
-	padding-bottom: 450px;	
-	padding-left: 700px;
+.container-fluid {
+	padding: 0;
 }
+
+body { padding-top: 50px;}
+
+.navbar {
+  background-color: #CEE6F0; 
+  font-family: Abril Fatface, Helvetica, Arial, sans-serif;
+}
+
+.footer-copyright {
+	float: left;
+	padding: 15px 15px;
+	background-color: #CEE6F0; 
+  font-family: Abril Fatface, Helvetica, Arial, sans-serif;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 50px;
+}
+
+.site-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #CEE6F0;
+}
+
+
+
+
+
