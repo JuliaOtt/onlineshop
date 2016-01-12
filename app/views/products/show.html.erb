@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @product.image_url %>
+</p>
+
+<%= link_to edit_product_path(@product), class: 'btn btn-warning btn-mini' do %> 
+	<i class="white"></i>
+	Edit
+	<% end %>
+
+<%= link_to products_path, class: 'btn btn-warning btn-mini' do %> 
+	<i class="white"></i>
+	Back
+	<% end %> 
+
+
+  
