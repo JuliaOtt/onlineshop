@@ -7,8 +7,10 @@
   <thead>
     <tr>
       <th style="width: 10%;">Name</th>
-      <th style="width: 40%;">Description</th>
+      <th style="width: 20%;">Description</th>
       <th style="width: 20%;">Image url</th>
+      <th style="width: 10%;">Color</th>
+      <th style="width: 10%;">Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,6 +21,8 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><img class="listed-product" src="<%= product.image_url %>" /></td>
+        <td><%= product.colour %><td>
+        <td><%= product.price %><td>
 
 
         <td style="width: 10%;">
@@ -58,5 +62,21 @@
     <% end %>
 
 </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-sm-2 col-md-4">
+        <%= image_tag(product.image_url, class: "img-responsive") %>
+        <h1><%= product.name %></h1>
+        <p><%= product.description %></p>
+        <p><%= product.colour %></p>
+        <strong><%= product.price %></strong>
+      </div><!--end col-->
+    <% end %>
+  </div><!--end row-->
+</div><!--end container-->
+
+
 
 
