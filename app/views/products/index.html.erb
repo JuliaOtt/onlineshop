@@ -20,7 +20,7 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
-        <td><img class="listed-product" src="<%= product.image_url %>" /></td>
+        <td><img class="listed-product img-responsive" src="<%= product.image_url %>" /></td>
         <td><%= product.colour %><td>
         <td><%= product.price %><td>
 
@@ -65,8 +65,8 @@
 
 <div class="container-fluid">
   <div class="row">
-    <%= render partial: "static_pages/product", collection: @products %>
-      <div class="col-sm-2 col-md-3">
+    <%= render partial: "product", collection: @products %>
+      <div class="col-sm-2 col-md-3 layout-product-container">
 
       </div><!--end col-->
   </div><!--end row-->
