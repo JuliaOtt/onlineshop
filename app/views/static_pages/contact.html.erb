@@ -3,10 +3,33 @@
 	<div class="contact-text">
 		<%= image_tag("Biker-with-backpack.png", class: "img-responsive") %>
 		<div class="clearfix"></div> 
-		<h1>Contact Information</h1>
+		<h1>Contact</h1>
 		<p><span class="glyphicon glyphicon-home"></span> Bikes Berlin GmbH, Radstr. 13, 12345 Berlin</p>
 		<p><span class="glyphicon glyphicon-phone"></span> +49 30 123 456</p>
   	<p><span class="glyphicon glyphicon-envelope"></span> contact@bikes-berlin.com</p>
+	
+
+		<%= flash[:notice] %>
+
+		<%= form_tag("/static_pages/thank_you") do %>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<%= label_tag :name, "Name" %>
+					<%= text_field_tag :name, nil, class: "form-control", placeholder: "Enter Name" %>
+				</div>
+				<div class="form-group">
+					<%= label_tag :email, "Email Address" %>
+					<%= text_field_tag :email, nil, class: "form-control", placeholder:"Enter E-Mail" %>
+				</div>
+				<div class="form-group">
+					<%= label_tag :message, "Message" %>
+					<%= text_area_tag :message, nil, class: "form-control", placeholder: "Enter Message" %>
+				</div>
+			</div> <!--end col -->
+		</div> <!-- end row -->
+		<%= submit_tag "Send" %>
+		<% end %>
 	</div>
 </section>
 
