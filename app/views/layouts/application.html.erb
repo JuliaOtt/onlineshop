@@ -86,6 +86,19 @@
   			</div><!-- /.container-fluid -->
   		</nav>
 
+      <p id="alert"><%= alert %></p>
+
+      <% if notice %>
+        <p id="notice" class="alert alert-info"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p id="alert" class="alert alert-info"><%= alert %></p>
+      <% end %>
+
+
+
+
   		<div class="container-fluid parent-container">
 				<%= yield %> <!--The yield method inserts the contents of each page of your application into the site layout-->
 
