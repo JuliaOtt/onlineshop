@@ -1,41 +1,49 @@
-<div class="product-created">	
-	<p id="notice"><%= notice %></p>
+<div class="product-created row">	
+	<div class="col-md-4">
+		<%= link_to edit_product_path(@product), class: 'btn btn-warning btn-mini' do %> 
+			<i class="white"></i>
+			Edit
+			<% end %>
 
-	<p>
-	  <strong>Name:</strong>
-	  <%= @product.name %>
-	</p>
+		<%= link_to :back, class: 'btn btn-warning btn-mini' do %> 
+			<i class="white"></i>
+			Back
+			<% end %> 
+		<p>
+		  <img class="img-responsive thumbnail" src="<%= @product.image_url %>"/>
+		</p>
+	</div><!--end col-md-4-->
 
-	<p>
-	  <strong>Description:</strong>
-	  <%= @product.description %>
-	</p>
+	<div class="col-md-4">
+		<p id="notice"><%= notice %></p>
 
-	<p>
-	  <strong>Image url:</strong>
-	  <%= @product.image_url %>
-	</p>
+		<h2>
+		  <%= @product.name %>
+		</h2>
 
-	<p>
-		<strong>Color:</strong>
-		<%= @product.colour %>
-	</p>
+		<p>
+		  <%= @product.description %>
+		</p>
 
-	<p>
-		<strong>Price:</strong>
-		<%= @product.price %>
-	</p>
+		<p>
+			<strong>Color:</strong>
+			<%= @product.colour %>
+		</p>
 
-	<%= link_to edit_product_path(@product), class: 'btn btn-warning btn-mini' do %> 
-		<i class="white"></i>
-		Edit
-		<% end %>
+		<strong>
+			<%= @product.price %>
+			<span class="glyphicon glyphicon-euro"></span>
+		</strong>
 
-	<%= link_to :back, class: 'btn btn-warning btn-mini' do %> 
-		<i class="white"></i>
-		Back
-		<% end %> 
-<div>
+		<p>
+			Average Rating:
+		</p>
+
+		</div><!--end col-md-4-->
+
+
+	</div> <!--end row-->
+</div>
 
 
 	  
