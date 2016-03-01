@@ -4,9 +4,17 @@ class CommentsController < ApplicationController
 		@product = Product.find(params[:product_id])
 		@comment = @product.comments.new(comment_params)
 		@comment.user  = current_user
-		@comment.save
-		redirect_to product_path(@product)
+		respond_to do |format|
+			if @comment.save
+				format.html { redirect_to @product, notice: 'Review was created successfully.' }
+			else
+				format.json { render :show, status: :created, location: @product }
+				format.html { redirect_to @product, alert: 'Review was not saved successfully.' }
+				format.json { render json: @comment.errors, status: :unprocessable_entity }
+			end	
+		end
 	end
+
 
 	def destroy
 	end
@@ -14,8 +22,7 @@ class CommentsController < ApplicationController
 	private
 
 		def comment_params
-			params.require(:comment).permit(:user_id, :body, :rating)
+			params.require(:comment)
+				.permit(:body, :rating)
 		end
-
-
 end

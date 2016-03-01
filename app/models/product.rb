@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base # This declaration means that your product cl
 	has_many :orders
 	has_many :comments
 
+	validates :name, presence: true
+
 	def average_rating
 		comments.average(:rating).to_f
 	end
