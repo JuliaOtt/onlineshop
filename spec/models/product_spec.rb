@@ -35,8 +35,10 @@ describe Product do
 			expect(@product.average_rating).to eq(3)
 		end
 
-		it "is not valid" do
-			expect(Product.new(description: "Nice bike")).not_to be_valid
+		context "when the Product has no description" do
+			it "is not valid" do
+				expect(Product.new(description: "Nice bike")).not_to be_valid
+			end
 		end
 	end
 end
