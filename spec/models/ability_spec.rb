@@ -53,13 +53,14 @@ describe Ability do
 	context 'when the user is not an admin' do 
 
 		it 'can just read everything' do
-			expect(@ability).to be_able_to(:read, :all)
+			expect(@ability).to be_able_to(:read, [Product, Comment])
 	 	end
 	end
 
 	context 'when the user is an admin' do
 		before do
 			@user = User.new(:admin => true)
+			@ability = Ability.new(@user)
 		end
 
 		it 'can manage all' do

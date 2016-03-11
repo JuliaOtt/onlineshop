@@ -10,7 +10,7 @@ class Ability
     else
         can :manage, User, id: user.id
         can :destroy, Comment, :user_id => user.id
-        can :read, :all 
+        can :read, [Product, Comment]
         can [:create, :update] , Product
         can :create , Comment
     end
