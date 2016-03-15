@@ -3,32 +3,38 @@ require 'rails_helper'
 describe Product do
 	context 'when the product has comments' do
 		before do
-			@product = Product.create!(name: "race bike")
+			@product = FactoryGirl.create(:product)
+			# @product = Product.create!(name: "race bike")
 
-			@user = User.create!(
-				first_name: "Albert",
-				last_name: "Ott",
-				email: "test@test.de",
-				password: "12345678"
-			)
+			@user = FactoryGirl.create(:user)
+			# @user = User.create!(
+			# 	first_name: "Albert",
+			# 	last_name: "Ott",
+			# 	email: "test@test.de",
+			# 	password: "12345678"
+			# )
 			
-			@product.comments.create!(
-				rating: 1,
-				user: @user,
-				body: "Awful bike!"
-			)
+			FactoryGirl.create(:comment, product: @product, user: @user, rating: 1)
+			FactoryGirl.create(:comment, product: @product, user: @user, rating: 3)
+			FactoryGirl.create(:comment, product: @product, user: @user, rating: 5)
 
-			@product.comments.create!(
-				rating: 3,
-				user: @user,
-				body: "ok bike!"
-			)
+			# @product.comments.create!(
+			# 	rating: 1,
+			# 	user: @user,
+			# 	body: "Awful bike!"
+			# )
 
-			@product.comments.create!(
-				rating: 5,
-				user: @user,
-				body: "fantastic bike!"
-			)
+			# @product.comments.create!(
+			# 	rating: 3,
+			# 	user: @user,
+			# 	body: "ok bike!"
+			# )
+
+			# @product.comments.create!(
+			# 	rating: 5,
+			# 	user: @user,
+			# 	body: "fantastic bike!"
+			# )
 		end
 
 		it "returns the average rating of all the comments" do

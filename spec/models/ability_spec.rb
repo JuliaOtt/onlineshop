@@ -3,12 +3,16 @@ require 'cancan/matchers'
 
 describe Ability do
 	before do
-		@user = User.create!(
-  		first_name: 'Albert',
-  		last_name: 'Ott',
-  		email: 'test@test.com',
-  		password: 'password'
-  	)
+
+		@user = FactoryGirl.create(:user)
+
+
+		# @user = User.create!(
+  # 		first_name: 'Albert',
+  # 		last_name: 'Ott',
+  # 		email: 'test@test.com',
+  # 		password: 'password'
+  # 	)
 
 	  @ability = Ability.new(@user)
 	end
@@ -53,7 +57,7 @@ describe Ability do
 	context 'when the user is not an admin' do 
 
 		it 'can just read everything' do
-			expect(@ability).to be_able_to(:read, [Product, Comment])
+			expect(@ability).to be_able_to(:read, [Product, Comment)
 	 	end
 	end
 
