@@ -66,6 +66,11 @@
 <div class="container-fluid">
   <div class="row">
     <%= render partial: "product", collection: @products %>
+
+    <!--<% @products.each do |product| %>
+      <%= render partial: 'product', locals: { product: product } %>
+    <% end %>-->
+
       <div class="col-sm-2 col-md-3 layout-product-container">
 
       </div><!--end col-->
