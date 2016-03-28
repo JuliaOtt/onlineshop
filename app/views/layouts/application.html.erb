@@ -64,7 +64,13 @@
             <% end %>
           <% end %>
       			<ul class="nav navbar-nav navbar-right">
-        			<li><a href="#">Link</a></li>
+        			<li>
+                    <% if user_signed_in? %>
+                      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                    <% else %>
+                      <%= link_to('Login', new_user_session_path) %>
+                    <% end %>
+                    </li>
         			<li class="dropdown">
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           			<ul class="dropdown-menu">
@@ -80,7 +86,18 @@
   			</div><!-- /.container-fluid -->
   		</nav>
 
-  		<div class="container-fluid">
+      <% if notice %>
+        <p id="notice" class="alert alert-info"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p id="alert" class="alert alert-info"><%= alert %></p>
+      <% end %>
+
+
+
+
+  		<div class="container parent-container">
 				<%= yield %> <!--The yield method inserts the contents of each page of your application into the site layout-->
 			</div>
 
@@ -88,11 +105,5 @@
 			<div class="container-fluid footer-copyright">&copy; 2015 Bikes Berlin>
 			</div>
 		</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	</body>
 </html>

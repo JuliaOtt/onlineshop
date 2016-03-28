@@ -1,0 +1,16 @@
+
+.parent-container {
+		position: relative;
+}
+
+@media all and (max-width: 400px) {
+	#sign_in, #sign_up {
+		width: 50%;
+		margin: -45% 0 0 -25%;
+	}
+
+	#sign_up {
+		margin-top: -65%;
+	}
+}
+

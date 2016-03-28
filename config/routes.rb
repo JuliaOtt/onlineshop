@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :products
+  post '/rate' => 'rater#create', :as => 'rate'
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => "user_registrations" }
+  resources :users
+  resources :products do
+    resources :comments
+  end
   resources :orders, only: [:index, :show, :create, :destroy]
+  resources :payments, only: [ :create ]
   
   get 'static_pages/about'
 
