@@ -24,5 +24,7 @@ class PaymentsController < ApplicationController
 		rescue Stripe::CardError => e
 			# The card has been declined
 		end
+		redirect_to product_path(product),
+			notice: 'Thank you! Your purchase has been successful.'
 	end
 end

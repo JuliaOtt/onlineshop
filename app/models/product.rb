@@ -9,8 +9,7 @@ class Product < ActiveRecord::Base # This declaration means that your product cl
 	end
 
 	def price_in_cents
-
-		price*100
+		(price * 100).to_i
 	end
 
 end
