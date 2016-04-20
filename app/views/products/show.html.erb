@@ -9,40 +9,46 @@
 			<i class="white"></i>
 			Back
 			<% end %> 
+		<% cache @products do %>
 		<p>
 		  <%= image_tag(@product.image_url, width: "350", class: "img-zoom", data_zoom_image: @product.image_url) %>
 		</p>
+		<% end %>
 	</div><!--end col-md-4-->
 
 	<div class="col-md-4">
 		<p id="notice"><%= notice %></p>
 
-		<h2>
-		  <%= @product.name %>
-		</h2>
+		<% cache @product do %>
+			<h2>
+			  <%= @product.name %>
+			</h2>
 
-		<p>
-		  <%= @product.description %>
-		</p>
+			<p>
+			  <%= @product.description %>
+			</p>
 
-		<p>
-			<strong>Color:</strong>
-			<%= @product.colour %>
-		</p>
+			<p>
+				<strong>Color:</strong>
+				<%= @product.colour %>
+			</p>
 
-		<strong>
-			<%= @product.price %>
-			<span class="glyphicon glyphicon-euro"></span>
-		</strong>
+			<strong>
+				<%= @product.price %>
+				<span class="glyphicon glyphicon-euro"></span>
+			</strong>
 
-		<p>
-			Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div>
-		</p>
+			<p>
+				Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div>
+			</p>
 
-		<%= form_tag payments_path, method: :post do %>
-			<%= hidden_field_tag :product_id, @product.id %>
-			<%= render partial: "shared/stripe_checkout_button" %>
-		<% end %>
+			<% cache @product do %>
+				<%= form_tag payments_path, method: :post do %>
+					<%= hidden_field_tag :product_id, @product.id %>
+					<%= render partial: "shared/stripe_checkout_button" %>
+				<% end %>
+			<% end %><!--end cache-->
+		<% end %><!--end cache-->
 
 		<%= render 'new_comment' %>
 

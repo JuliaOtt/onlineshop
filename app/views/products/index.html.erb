@@ -15,41 +15,44 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><img class="listed-product img-responsive" src="<%= product.image_url %>" /></td>
-        <td><%= product.colour %><td>
-        <td><%= product.price %><td>
+  <% cache @products do %>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><img class="listed-product img-responsive" src="<%= product.image_url %>" /></td>
+          <td><%= product.colour %><td>
+          <td><%= product.price %><td>
 
 
-        <td style="width: 10%;">
-          <%= link_to product, class: 'btn btn-info' do %>
-            <i class="white"></i>
-            show product
+          <td style="width: 10%;">
+            <%= link_to product, class: 'btn btn-info' do %>
+              <i class="white"></i>
+              show product
 
-            <% end %>
-        </td>
-        <td style="width: 10%;">
-          <%= link_to edit_product_path(product), class: 'btn btn-warning' do %>
-            <i class="white"></i>
-            edit product
+              <% end %>
+          </td>
+          <td style="width: 10%;">
+            <%= link_to edit_product_path(product), class: 'btn btn-warning' do %>
+              <i class="white"></i>
+              edit product
 
-            <% end %>
-        </td>
-        <td style="width: 10%;">
-          <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+              <% end %>
+          </td>
+          <td style="width: 10%;">
+            <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
 
-            <i class="white"></i>
-            delete product
+              <i class="white"></i>
+              delete product
 
-            <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+
 </table>
 
 <br>
@@ -64,17 +67,19 @@
 </div>
 
 <div class="container-fluid">
-  <div class="row">
-    <%= render partial: "product", collection: @products %>
+  <% cache(cache_key_for_products) do %>
+    <div class="row">
+      <%= render partial: "product", collection: @products %>
 
-    <!--<% @products.each do |product| %>
-      <%= render partial: 'product', locals: { product: product } %>
-    <% end %>-->
+      <!--<% @products.each do |product| %>
+        <%= render partial: 'product', locals: { product: product } %>
+      <% end %>-->
 
-      <div class="col-sm-2 col-md-3 layout-product-container">
+        <div class="col-sm-2 col-md-3 layout-product-container">
 
-      </div><!--end col-->
-  </div><!--end row-->
+        </div><!--end col-->
+    </div><!--end row-->
+  <% end %>
 </div><!--end container-->
 
 
