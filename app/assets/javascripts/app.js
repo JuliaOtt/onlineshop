@@ -14,7 +14,7 @@ app.factory('models', ['$resource', function($resource){
 	return x;
 }]);
 
-app.controller('OrdersCtrl', ['$scope', function($scope){
+app.controller('OrdersCtrl', ['$scope', 'models', function($scope, models){
 	$scope.orders = models.orders.query();
 	$scope.products = models.products.query();
 
