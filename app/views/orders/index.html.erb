@@ -10,9 +10,8 @@
 		</select>
 
 
-		<input type="number" value="{{oders[orders.length - 1].id + 1}}" disabled>
-		<input type="number" step="0.01" class="form-control" placeholder="Total">
-		<input type="number" class="form-control">
+		<input type="number" value="{{orders[orders.length - 1].id + 1}}" disabled class="form-control">
+		<input type="number" step="0.01" class="form-control" placeholder="Total" ng-model="newOrder.total">
 
 		<input type="submit" value="+" class="btn btn-success">
 	</form>
@@ -27,8 +26,8 @@
 		<tr ng-repeat="order in orders | orderBy: '-id':reverse">
 			<td>
 				{{order.id}}
-				<small ng-show="oder.id"><br>-{{order.user.email}</small>
-			<td>
+				<small ng-show="order.user_id"><br>-{{order.user.email}}</small>
+			</td>
 			<td>
 				<strong>{{order.total | currency}}</strong>
 			</td>
